@@ -6,7 +6,7 @@ Lettering is a simple way to wrap your text in `<span>`s for kerning, or other t
 ## Usage
 Lettering is registered as a global function, so all you have to do is call lettering with a selector as argument. If no valid selector is recognized, it throws an error, so be sure to place the function call inside a try-catch block.
 
-Lettering wraps the letters in your text in `span`s with a class `char` appended by the number of the letter, for example `char1`. 
+Lettering wraps the letters in your text in `<span>`s with a class `char` appended by the number of the letter, for example `char1`. 
 __Mind you__, counting starts at 1 instead of 0;
 
 ### Include lettering in your document
@@ -35,6 +35,8 @@ Starting with the simplest of markups:
 ````javascript
 lettering( document.getElementById("kern-me-plz") );
 ````
+
+And it spits out something lik this:
 
 ````html
 <div id="kern-me-plz">
