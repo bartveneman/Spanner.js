@@ -32,14 +32,11 @@
 	var wrapInner = function (context) {
 
 		var text = context.innerHTML.split(''),
-			replacer = [],
-			letter,
-			clazz = "char";
+			replacer = [];
 
 		// Foreach character in the text, wrap it in a <span>;
 		for (var i = 0; i < text.length; i += 1) {
-			letter = text[i];
-			replacer[i] = "<span class='" + clazz + (i + 1) + "'>" + letter + "</span>";
+			replacer[i] = "<span class='char" + (i + 1) + "'>" + text[i] + "</span>";
 		}
 
 		context.innerHTML = replacer.join('');
