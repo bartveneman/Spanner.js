@@ -1,47 +1,55 @@
-;(function() {
+;(function(d) {
 
-	/**
-	 * The lettering method. Calls the wrapInner method and sorts out whether to call 
-	 * it a single time or multiple, depending on the selector that is given.
-	 * @param  {DOM node} context  [The DOM Node(s) to apply lettering to]
-	 * @return {DOM node}          [The DOM node(s) that was/were given as an argument]
-	 */
+	var wrap = function (context) {
+
+		var children = context.childNodes,
+			node,
+			textNode,
+			textValue,
+			spannedWords,
+			letters,
+			spannedLetter,
+			letter,
+			spannedLetters = d.createDocumentFragment(),
+			numWords = 0;
+
+		for (var i = 0; i < children.length; i += 1) {
+			node = children[i];
+
+			if (node.nodeType === 3) {
+				numWords += 1;
+				textValue = node.nodeValue;
+				letters = textValue.split('');
+
+				for (var j = 0; j < letters.length; j += 1) {
+					var num = j + 1;
+					var span = d.createElement("span");
+					span.className = "char" + numWords + "-" + num;
+					span.appendChild(d.createTextNode(letters[j]));
+					spannedLetters.appendChild(span);
+				}
+
+				node.parentNode.replaceChild(spannedLetters, node);
+			}
+		}
+
+	};
+
 	var lettering = function (context) {
 
-		if (!context || context === null) {
-			throw "Invalid or non-existing DOM node for selector " + selector;
+		if (!context || typeof(context) !== "object" || context === null) {
+			throw "Unable to perform lettering on context given.";
 		}
 
 		if (context.length && context.length > 1) {
 			for (var i = 0; i < context.length; i += 1) {
-				wrapInner(context[i]);
+				wrap(context[i]);
 			}
 		} else {
-			wrapInner(context);
+			wrap(context);
 		}
 
 		return context;
-
-	};
-
-	/**
-	 * Do the wrapping for a single DOM-node
-	 * @param  {DOM node} context  [The DOM node to apply the lettering to]
-	 * @return {DOM node}          [The initial context]
-	 */
-	var wrapInner = function (context) {
-
-		var text = context.innerHTML.split(''),
-			replacer = [];
-
-		// Foreach character in the text, wrap it in a <span>;
-		for (var i = 0; i < text.length; i += 1) {
-			replacer[i] = "<span class='char" + (i + 1) + "'>" + text[i] + "</span>";
-		}
-
-		context.innerHTML = replacer.join('');
-		return context;
-
 	};
 
 
@@ -51,4 +59,4 @@
 		window.lettering = lettering;
 	}
 
-}());
+}(document));
