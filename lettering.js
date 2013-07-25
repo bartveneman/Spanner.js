@@ -13,7 +13,7 @@
 			letters,
 			wrapper = d.createDocumentFragment(),
 			wrap,
-			numWords = 0;
+			numLetters = 0;
 
 		// Outer loop: iterates over node children to check if
 		// they are of nodeType 3, which is a TextNode;
@@ -26,11 +26,6 @@
 				node = checkNode(node);
 			}
 
-			// Keeping count of the number of textNodes, to be 
-			// able to identify seperate textnodes via the 
-			// classname: .class-2-1;
-			numWords += 1;
-
 			// Split the node's text into seperate characters;
 			letters = node.nodeValue.split('');
 
@@ -38,8 +33,9 @@
 			// it's own wrapper span element and append that to
 			// the documentFragment;
 			for (var j = 0; j < letters.length; j += 1) {
+				numLetters += 1;
 				wrap = d.createElement("span");
-				wrap.className = "char" + numWords + "-" + (j + 1);
+				wrap.className = "char" + numLetters;
 				wrap.appendChild( d.createTextNode(letters[j]) );
 				wrapper.appendChild(wrap);
 			}
@@ -80,15 +76,18 @@
 	lettering = function (context) {
 		"use strict";
 
+		var numElements;
+
+		// Check if there is a valid context/DOM node;
 		if (!context || typeof(context) !== "object" || context === null) {
-			// Check if there is a valid context/DOM node;
 			throw "Unable to perform lettering on context given.";
 		}
 
-		// Method calling logic, as @davatron5000 puts it;
-		if (context.length && context.length > 1) {
+		numElements = context.length;
+
+		if (numElements && numElements > 1) {
 			// Iterate over multiple elements ...
-			for (var i = 0; i < context.length; i += 1) {
+			for (var i = 0; i < numElements; i += 1) {
 				wrap(context[i]);
 			}
 		} else {
