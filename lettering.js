@@ -4,32 +4,31 @@
 
 		var children = context.childNodes,
 			node,
-			textNode,
-			textValue,
-			spannedWords,
 			letters,
-			spannedLetter,
-			letter,
-			spannedLetters = d.createDocumentFragment(),
+			wrappedLetters = d.createDocumentFragment(),
+			wrap,
 			numWords = 0;
 
+		// Outer loop: iterates over node children to check if
+		// they are of nodeType 3, which is a TextNode;
 		for (var i = 0; i < children.length; i += 1) {
 			node = children[i];
 
 			if (node.nodeType === 3) {
 				numWords += 1;
-				textValue = node.nodeValue;
-				letters = textValue.split('');
+				letters = node.nodeValue.split('');
 
+				// Inner loop: give each seperate letter/character
+				// it's own wrapper span element and append that to
+				// the documentFragment;
 				for (var j = 0; j < letters.length; j += 1) {
-					var num = j + 1;
-					var span = d.createElement("span");
-					span.className = "char" + numWords + "-" + num;
-					span.appendChild(d.createTextNode(letters[j]));
-					spannedLetters.appendChild(span);
+					wrap = d.createElement("span");
+					wrap.className = "char" + numWords + "-" + (j + 1);
+					wrap.appendChild(d.createTextNode(letters[j]));
+					wrappedLetters.appendChild(wrap);
 				}
 
-				node.parentNode.replaceChild(spannedLetters, node);
+				node.parentNode.replaceChild(wrappedLetters, node);
 			}
 		}
 
@@ -38,14 +37,17 @@
 	var lettering = function (context) {
 
 		if (!context || typeof(context) !== "object" || context === null) {
+			// Check if there is a valid context/dom node;
 			throw "Unable to perform lettering on context given.";
 		}
 
 		if (context.length && context.length > 1) {
+			// Iterate over multiple elements ...
 			for (var i = 0; i < context.length; i += 1) {
 				wrap(context[i]);
 			}
 		} else {
+			// ... or just a single one;
 			wrap(context);
 		}
 
