@@ -1,5 +1,10 @@
 ;(function(d) {
 
+	/**
+	 * Wrap the given context in span elements
+	 * @param  {DOM node} context [A single DOM node to wrap in span tags]
+	 * @return {DOM node}         [The wrapped node]
+	 */
 	var wrap = function (context) {
 		"use strict";
 
@@ -21,6 +26,9 @@
 				node = checkNode(node);
 			}
 
+			// Keeping count of the number of textNodes, to be 
+			// able to identify seperate textnodes via the 
+			// classname: .class-2-1;
 			numWords += 1;
 
 			// Split the node's text into seperate characters;
@@ -32,7 +40,7 @@
 			for (var j = 0; j < letters.length; j += 1) {
 				wrap = d.createElement("span");
 				wrap.className = "char" + numWords + "-" + (j + 1);
-				wrap.appendChild(d.createTextNode(letters[j]));
+				wrap.appendChild( d.createTextNode(letters[j]) );
 				wrapper.appendChild(wrap);
 			}
 
@@ -42,6 +50,11 @@
 
 	},
 
+	/**
+	 * Check if the given node is eligible for the lettering process;
+	 * @param  {DOM node} node [The node that should be checked]
+	 * @return {DOM node}      [The node that has been approved or false if the node is not eligible]
+	 */
 	checkNode = function (node) {
 		"use strict";
 
@@ -59,6 +72,11 @@
 		}
 	},
 
+	/**
+	 * Starting point of the lettering process;
+	 * @param  {DOM node(s)} context [The document element to apply lettering to]
+	 * @return {DOM node(s)}         [The document element that has lettering applied to]
+	 */
 	lettering = function (context) {
 		"use strict";
 
