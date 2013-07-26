@@ -64,7 +64,24 @@ Lettering gives you this:
 
 
 ### Using inline tags
-Lettering is able to recognize inline tags one level deep. So you can use `<em>`, `<i>`, `<b>` or `<strong>` inside the element you want to apply lettering to.
+Lettering is able to recognize inline tags one level deep. So you can use `<em>`, `<i>`, `<b>`, `<strong>` or even `a` inside the element you want to apply lettering to. Supported tags:
+
+* em 
+* strong 
+* i 
+* b 
+* a 
+* small
+* span
+* abbr
+* cite
+* dfn
+* kbd
+* samp
+* bdo
+* q
+* sub
+* sup
 
 ````html
 <div id="kern-me-plz">Going <em>nuts</em> <strong>here</strong> <a href="">dude</a></div>
