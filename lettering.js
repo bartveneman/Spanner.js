@@ -61,8 +61,8 @@
 			// Node is a textNode. You're OK;
 			return node;
 		} else if (safeTags.indexOf(tagName) !== -1) {
-			// Assuming we can use firstChild here, as nesting of these
-			// tags is rarely done. #fingerscrossed;
+			// Assuming we can use firstChild here, as nesting of 
+			// these tags is rarely done. #fingerscrossed;
 			return node.firstChild;
 		} else {
 			return false;
