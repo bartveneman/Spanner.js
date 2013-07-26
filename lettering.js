@@ -55,7 +55,7 @@
 		"use strict";
 
 		var tagName = node.nodeName.toLowerCase(),
-			safeTags = ["em", "strong", "i", "b", "a", "small", "span", "abbr", "cite", "dfn", "kbd", "samp", "bdo", "q", "sub", "sup"];
+			safeTags = ["em", "strong", "i", "b", "a", "small", "abbr", "cite", "dfn", "kbd", "samp", "bdo", "q", "sub", "sup"];
 
 		if (node.nodeType === 3) {
 			// Node is a textNode. You're OK;
