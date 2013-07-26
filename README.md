@@ -67,7 +67,7 @@ Lettering gives you this:
 Lettering is able to recognize inline tags one level deep. So you can use `<em>`, `<i>`, `<b>` or `<strong>` inside the element you want to apply lettering to.
 
 ````html
-<div id="kern-me-plz">Going <em>nuts</em> <strong>here</strong></div>
+<div id="kern-me-plz">Going <em>nuts</em> <strong>here</strong> <a href="">dude</a></div>
 ````
 
 ````javascript
@@ -97,6 +97,13 @@ Output:
 		<span class="char14">r</span>
 		<span class="char15">e</span>
 	</strong>
+	<span class="char16"></span>
+	<a href="">
+		<span class="char17">d</span>
+		<span class="char18">u</span>
+		<span class="char19">d</span>
+		<span class="char20">e</span>
+	</a>
 </div>
 ````
 
