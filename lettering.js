@@ -59,7 +59,7 @@
 		if (node.nodeType === 3) {
 			// Node is a textNode. You're OK;
 			return node;
-		} else if (tagName === "EM" || tagName === "STRONG" || tagName === "I" || tagName === "B") {
+		} else if (tagName === "EM" || tagName === "STRONG" || tagName === "I" || tagName === "B" || tagName === "A") {
 			// Assuming we can use firstChild here, as nesting of these
 			// tags is rarely done. #fingerscrossed;
 			return node.firstChild;
