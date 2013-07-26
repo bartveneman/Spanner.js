@@ -54,12 +54,13 @@
 	checkNode = function (node) {
 		"use strict";
 
-		var tagName = node.nodeName;
+		var tagName = node.nodeName.toLowerCase(),
+			safeTags = ["em", "strong", "i", "b", "a"];
 
 		if (node.nodeType === 3) {
 			// Node is a textNode. You're OK;
 			return node;
-		} else if (tagName === "EM" || tagName === "STRONG" || tagName === "I" || tagName === "B" || tagName === "A") {
+		} else if (safeTags.indexOf(tagName) !== -1) {
 			// Assuming we can use firstChild here, as nesting of these
 			// tags is rarely done. #fingerscrossed;
 			return node.firstChild;
