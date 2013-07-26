@@ -130,6 +130,7 @@ Lettering will do the counting for you:
 	<span class="char10">l</span>
 	<span class="char11">z</span>
 </div>
+````
 
 
 ## jQuery-free!
