@@ -53,7 +53,7 @@
                 }
 
                 // Split the node's text into seperate characters;
-                letters = new String(node.nodeValue);
+                letters = node.nodeValue;
 
                 // Inner loop: give each seperate letter/character
                 // it's own wrapper span element and append that to
