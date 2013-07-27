@@ -53,7 +53,7 @@
                 }
 
                 // Split the node's text into seperate characters;
-                letters = node.nodeValue.split('');
+                letters = new String(node.nodeValue);
 
                 // Inner loop: give each seperate letter/character
                 // it's own wrapper span element and append that to
@@ -62,7 +62,7 @@
                     numLetters += 1;
                     span = d.createElement("span");
                     span.className = "char" + numLetters;
-                    span.appendChild(d.createTextNode(letters[j]));
+                    span.appendChild(d.createTextNode(letters.charAt(j)));
                     wrapper.appendChild(span);
                 }
 
