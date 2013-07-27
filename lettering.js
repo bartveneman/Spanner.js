@@ -3,21 +3,23 @@
     "use strict";
 
     /**
-     * Check if the given node is eligible for the lettering process;
-     * @param  {DOM node} node [The node that should be checked]
-     * @return {DOM node}      [The node that has been approved or false if the node is not eligible]
+     * These tags are safe to use within Lettering
+     * @type {Array}
      */
-    var checkNode = function (node) {
-            var safeTags;
+    var SAFE_TAGS = ["em", "strong", "i", "b", "a", "small", "abbr", "cite", "dfn", "kbd", "samp", "bdo", "q", "sub", "sup"],
 
+        /**
+         * Check if the given node is eligible for the lettering process;
+         * @param  {DOM node} node [The node that should be checked]
+         * @return {DOM node}      [The node that has been approved or false if the node is not eligible]
+         */
+        checkNode = function (node) {
             if (node.nodeType === 3) {
                 // Node is a textNode. You're OK;
                 return node;
             }
 
-            safeTags = ["em", "strong", "i", "b", "a", "small", "abbr", "cite", "dfn", "kbd", "samp", "bdo", "q", "sub", "sup"];
-
-            if (safeTags.indexOf(node.nodeName.toLowerCase()) !== -1) {
+            if (SAFE_TAGS.indexOf(node.nodeName.toLowerCase()) !== -1) {
                 // Assuming we can use firstChild here, as nesting of 
                 // these tags is rarely done. #fingerscrossed;
                 return node.firstChild;
@@ -35,8 +37,6 @@
             var nodes = context.childNodes,
                 node,
                 letters,
-                nodesLength,
-                lettersLength,
                 wrapper = d.createDocumentFragment(),
                 span,
                 numLetters = 0,
@@ -45,7 +45,7 @@
 
             // Outer loop: iterates over node children to check if
             // they are of nodeType 3, which is a TextNode;
-            for (i = 0, nodesLength = nodes.length; i < nodesLength; i += 1) {
+            for (i = 0; i < nodes.length; i += 1) {
                 node = checkNode(nodes[i]);
 
                 if (!node) {
@@ -58,7 +58,7 @@
                 // Inner loop: give each seperate letter/character
                 // it's own wrapper span element and append that to
                 // the documentFragment;
-                for (j = 0, lettersLength = letters.length; j < lettersLength; j += 1) {
+                for (j = 0; j < letters.length; j += 1) {
                     numLetters += 1;
                     span = d.createElement("span");
                     span.className = "char" + numLetters;
