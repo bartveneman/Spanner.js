@@ -3,10 +3,10 @@
     "use strict";
 
     /**
-    * Check if the given node is eligible for the lettering process;
-    * @param  {DOM node} node [The node that should be checked]
-    * @return {DOM node}      [The node that has been approved or false if the node is not eligible]
-    */
+     * Check if the given node is eligible for the lettering process;
+     * @param  {DOM node} node [The node that should be checked]
+     * @return {DOM node}      [The node that has been approved or false if the node is not eligible]
+     */
     var checkNode = function (node) {
             var tagName = node.nodeName.toLowerCase(),
                 safeTags = ["em", "strong", "i", "b", "a", "small", "abbr", "cite", "dfn", "kbd", "samp", "bdo", "q", "sub", "sup"];
@@ -26,10 +26,10 @@
         },
 
         /**
-        * Wrap the given context in span elements
-        * @param  {DOM node} context [A single DOM node to wrap in span tags]
-        * @return {DOM node}         [The wrapped node]
-        */
+         * Wrap the given context in span elements
+         * @param  {DOM node} context [A single DOM node to wrap in span tags]
+         * @return {DOM node}         [The wrapped node]
+         */
         wrap = function (context) {
             var nodes = context.childNodes,
                 node,
@@ -72,10 +72,10 @@
         },
 
         /**
-        * Starting point of the lettering process;
-        * @param  {DOM node(s)} context [The document element to apply lettering to]
-        * @return {DOM node(s)}         [The document element that has lettering applied to]
-        */
+         * Starting point of the lettering process;
+         * @param  {DOM node(s)} context [The document element to apply lettering to]
+         * @return {DOM node(s)}         [The document element that has lettering applied to]
+         */
         lettering = function (context) {
             var numElements,
                 i;
