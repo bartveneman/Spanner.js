@@ -8,15 +8,16 @@
      * @return {DOM node}      [The node that has been approved or false if the node is not eligible]
      */
     var checkNode = function (node) {
-            var tagName = node.nodeName.toLowerCase(),
-                safeTags = ["em", "strong", "i", "b", "a", "small", "abbr", "cite", "dfn", "kbd", "samp", "bdo", "q", "sub", "sup"];
+            var safeTags;
 
             if (node.nodeType === 3) {
                 // Node is a textNode. You're OK;
                 return node;
             }
 
-            if (safeTags.indexOf(tagName) !== -1) {
+            safeTags = ["em", "strong", "i", "b", "a", "small", "abbr", "cite", "dfn", "kbd", "samp", "bdo", "q", "sub", "sup"];
+
+            if (safeTags.indexOf(node.nodeName.toLowerCase()) !== -1) {
                 // Assuming we can use firstChild here, as nesting of 
                 // these tags is rarely done. #fingerscrossed;
                 return node.firstChild;
@@ -34,11 +35,11 @@
             var nodes = context.childNodes,
                 node,
                 letters,
+                nodesLength,
+                lettersLength,
                 wrapper = d.createDocumentFragment(),
                 span,
                 numLetters = 0,
-                nodesLength,
-                lettersLength,
                 i,
                 j;
 
@@ -82,12 +83,12 @@
 
             // Check if there is a valid context/DOM node;
             if (!context || typeof context !== "object" || context === null) {
-                throw "Unable to perform lettering on context given.";
+                throw new TypeError("Unable to perform lettering on context given.");
             }
 
             numElements = context.length;
 
-            if (numElements && numElements > 1) {
+            if (numElements) {
                 // Iterate over multiple elements ...
                 for (i = 0; i < numElements; i += 1) {
                     wrap(context[i]);
