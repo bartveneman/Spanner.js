@@ -108,17 +108,6 @@
 		</div>
 	</section>
 
-		<section>
-			<h2>Using classes, but only one found</h2>
-			<p>To increase perfromance here, when only one element is found, it will be wrapped instantly instead of being pushed through another for-loop</p>
-			<pre><code class="language-markup">&lt;div class="klazz"&gt;klazzified&lt;/div&gt;</code></pre>
-			<pre><code class="language-javascript">lettering( document.getElementsByClassName("klazz") );</code></pre>
-			<h3>Result</h3>
-			<div class="result" id="example-7">
-				<div class="klazz">clazzified</div>
-			</div>
-		</section>
-
 	<section>
 		<h2>Breaking the function</h2>
 		<p>Here we are looking for a non-existing element with id 'non-existing-id'. Remember to put all calls to lettering inside a try-catch block, to prevent breaking the complete program.</p>
