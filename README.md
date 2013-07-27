@@ -159,7 +159,7 @@ Lettering will do the counting for you:
 The one thing lettering can't handle is, er, `<span>`s. It will not split the text inside the span, but leave the whole tag alone. You could use it as a feature: using a span inside your element will prevent it from having lettering applied ;-)
 
 ## Credits
-Thanks to (Phil Green)[https://github.com/ShirtlessKirk] for pointing out _many_ jslint errors and some really useful optimalisations.
+Thanks to [Phil Green](https://github.com/ShirtlessKirk) for pointing out _many_ jslint errors and some really useful optimalisations.
 
 
 ## jQuery-free!
