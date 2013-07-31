@@ -82,7 +82,7 @@
                 i;
 
             // Check if there is a valid context/DOM node;
-            if (!context || typeof context !== "object" || context === null) {
+            if (!context) {
                 throw new TypeError("Unable to perform lettering on context given.");
             }
 
