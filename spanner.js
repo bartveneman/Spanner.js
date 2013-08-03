@@ -3,13 +3,13 @@
     "use strict";
 
     /**
-     * These tags are safe to use within Lettering
+     * These tags are safe to use within spanning
      * @type {Array}
      */
     var SAFE_TAGS = ["em", "strong", "i", "b", "a", "small", "abbr", "cite", "dfn", "kbd", "samp", "bdo", "q", "sub", "sup"],
 
         /**
-         * Check if the given node is eligible for the lettering process;
+         * Check if the given node is eligible for the spanning process;
          * @param  {DOM node} node [The node that should be checked]
          * @return {DOM node}      [The node that has been approved or false if the node is not eligible]
          */
@@ -73,11 +73,11 @@
         },
 
         /**
-         * Starting point of the lettering process;
+         * Starting point of the spanning process;
          * @param  {DOM node(s)} context [The document element to apply lettering to]
          * @return {DOM node(s)}         [The document element that has lettering applied to]
          */
-        lettering = function (context) {
+        spanner = function (context) {
             var numElements,
                 i;
 
@@ -102,7 +102,7 @@
         };
 
 
-    // Make lettering globally accessible;
-    window.lettering = lettering;
+    // Make spanner globally accessible;
+    window.spanner = spanner;
 
 }(document));
