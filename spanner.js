@@ -21,7 +21,8 @@
 
             if (SAFE_TAGS.indexOf(node.nodeName.toLowerCase()) !== -1) {
                 // Assuming we can use firstChild here, as nesting of 
-                // these tags is rarely done. #fingerscrossed;
+                // these tags is rarely done, although it is valid HTML
+                // #fingerscrossed;
                 return node.firstChild;
             }
 
