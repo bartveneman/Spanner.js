@@ -19,7 +19,7 @@ And call the lettering function from your application:
 
 ````javascript
 try {
-	lettering( selector );
+	spanner( selector );
 } catch (e) {
 	console.warn(e); // element not found or not eligible;
 }
