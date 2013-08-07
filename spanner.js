@@ -1,5 +1,6 @@
 /*jslint browser: true, continue: true */
-(function (d) {
+/*global define*/
+(function (root, document) {
     "use strict";
 
     /**
@@ -38,7 +39,7 @@
             var nodes = context.childNodes,
                 node,
                 letters,
-                wrapper = d.createDocumentFragment(),
+                wrapper = document.createDocumentFragment(),
                 span,
                 numLetters = 0,
                 i,
@@ -61,9 +62,9 @@
                 // the documentFragment;
                 for (j = 0; j < letters.length; j += 1) {
                     numLetters += 1;
-                    span = d.createElement("span");
+                    span = document.createElement("span");
                     span.className = "char" + numLetters;
-                    span.appendChild(d.createTextNode(letters.charAt(j)));
+                    span.appendChild(document.createTextNode(letters.charAt(j)));
                     wrapper.appendChild(span);
                 }
 
@@ -109,7 +110,7 @@
             return spanner;
         });
     } else {
-        window.spanner = spanner;
+        root.spanner = spanner;
     }
 
-}(document));
+}(this, document));
