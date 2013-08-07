@@ -104,6 +104,12 @@
 
 
     // Make spanner globally accessible;
-    window.spanner = spanner;
+    if (typeof define === "function" && define.amd) {
+        define(function () {
+            return spanner;
+        });
+    } else {
+        window.spanner = spanner;
+    }
 
 }(document));
