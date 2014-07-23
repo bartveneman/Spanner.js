@@ -4,7 +4,6 @@ Spanner.js is a simple way to wrap your text in `<span>`s for kerning, or other 
 
 Spanner.js is a jQuery-free rip-off from @davatron5000 's [lettering.js](https://github.com/davatron5000/Lettering.js).
 
-
 ## Usage
 Spanner.js is registered as a global function, so all you have to do is call lettering with a valid selector as argument. If no valid selector is recognized, it throws an error, so be sure to place the function call inside a try-catch block.
 
@@ -25,9 +24,7 @@ try {
 }
 ````
 
-
 ## Examples
-
 
 ### Using a basic selector
 
@@ -62,23 +59,22 @@ Spanner gives you this:
 </div>
 ````
 
-
 ### Using inline tags
 Spanner.js is able to recognize inline tags one level deep. So you can use `<em>`, `<i>`, `<b>`, `<strong>` or even `a` inside the element you want to apply lettering to. Supported tags:
 
-* em 
-* strong 
-* i 
-* b 
 * a 
-* small
 * abbr
+* b 
+* bdo
 * cite
 * dfn
+* em 
+* i 
 * kbd
-* samp
-* bdo
 * q
+* samp
+* small
+* strong 
 * sub
 * sup
 
@@ -123,7 +119,6 @@ Output:
 </div>
 ````
 
-
 ### Using the Line Break Element
 Spanner.js is capable of dealing with the Line Break Element. It splits up the words before and after the break element and it continues the char count.
 
@@ -164,7 +159,6 @@ Tests are available in the [test page](test.html).
 ## Credits
 Thanks to [Phil Green](https://github.com/ShirtlessKirk) for pointing out _many_ jslint errors and some really useful optimalisations.
 Many kudos to Dave Rupert for creating the original version, called [Lettering.js](https://github.com/davatron5000/Lettering.js).
- 
 
 ## jQuery-free!
 You don't need jQuery for _everything_. No, really, you don't. ;)

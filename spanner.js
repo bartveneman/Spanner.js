@@ -1,4 +1,5 @@
 /*jslint browser: true, continue: true */
+
 window.spanner = (function (window, document) {
     "use strict";
 
