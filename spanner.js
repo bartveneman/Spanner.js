@@ -1,29 +1,29 @@
 /*jslint browser: true, continue: true */
-/*global define*/
-(function (root, document) {
+window.spanner = (function (window, document) {
     "use strict";
 
-    /**
-     * These tags are safe to use within spanning
-     * @type {Array}
-     */
-    var SAFE_TAGS = ["em", "strong", "i", "b", "a", "small", "abbr", "cite", "dfn", "kbd", "samp", "bdo", "q", "sub", "sup"],
+    var /**
+         * These tags are safe to use within spanning
+         * @type {Array}
+         * @private
+         */
+        _SAFE_TAGS = ["a", "abbr", "b", "bdo", "cite", "em", "dfn", "i", "kbd", "q", "samp", "small", "strong", "sub", "sup"],
 
         /**
          * Check if the given node is eligible for the spanning process;
-         * @param  {DOM node} node [The node that should be checked]
-         * @return {DOM node}      [The node that has been approved or false if the node is not eligible]
+         * @param  {Object} node The node that should be checked
+         * @return {Object}      The node that has been approved or false if the node is not eligible
+         * @private
          */
-        checkNode = function (node) {
+        _checkNode = function (node) {
             if (node.nodeType === 3) {
                 // Node is a textNode. You're OK;
                 return node;
             }
 
-            if (SAFE_TAGS.indexOf(node.nodeName.toLowerCase()) !== -1) {
+            if (_SAFE_TAGS.indexOf(node.nodeName.toLowerCase()) !== -1) {
                 // Assuming we can use firstChild here, as nesting of 
                 // these tags is rarely done, although it is valid HTML
-                // #fingerscrossed;
                 return node.firstChild;
             }
 
@@ -32,10 +32,11 @@
 
         /**
          * Wrap the given context in span elements
-         * @param  {DOM node} context [A single DOM node to wrap in span tags]
-         * @return {DOM node}         [The wrapped node]
+         * @param  {Object} context A single DOM node to wrap in span tags
+         * @return {Object}         The wrapped node
+         * @private
          */
-        wrap = function (context) {
+        _wrap = function (context) {
             var nodes = context.childNodes,
                 node,
                 letters,
@@ -48,7 +49,7 @@
             // Outer loop: iterates over node children to check if
             // they are of nodeType 3, which is a TextNode;
             for (i = 0; i < nodes.length; i += 1) {
-                node = checkNode(nodes[i]);
+                node = _checkNode(nodes[i]);
 
                 if (!node) {
                     continue;
@@ -76,8 +77,9 @@
 
         /**
          * Starting point of the spanning process;
-         * @param  {DOM node(s)} context [The document element to apply lettering to]
-         * @return {DOM node(s)}         [The document element that has lettering applied to]
+         * @param  {Object|Array} context The document element to apply lettering to
+         * @return {Object|Array}         The document element that has lettering applied to
+         * @private
          */
         spanner = function (context) {
             var numElements,
@@ -93,24 +95,16 @@
             if (numElements) {
                 // Iterate over multiple elements ...
                 for (i = 0; i < numElements; i += 1) {
-                    wrap(context[i]);
+                    _wrap(context[i]);
                 }
             } else {
                 // ... or just a single one;
-                wrap(context);
+                _wrap(context);
             }
 
             return context;
         };
 
+    return spanner;
 
-    // Make spanner globally accessible;
-    if (typeof define === "function" && define.amd) {
-        define(function () {
-            return spanner;
-        });
-    } else {
-        root.spanner = spanner;
-    }
-
-}(this, document));
+}(window, document));

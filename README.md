@@ -158,6 +158,9 @@ Spanner.js will do the counting for you:
 ## Known issues
 The one thing Spanner.js can't handle is, er, `<span>`s. It will not split the text inside the span, but leave the whole tag alone. You could use it as a feature: using a span inside your element will prevent it from having Spanner applied ;-)
 
+## Test
+Tests are available in the [test page](test.html).
+
 ## Credits
 Thanks to [Phil Green](https://github.com/ShirtlessKirk) for pointing out _many_ jslint errors and some really useful optimalisations.
 Many kudos to Dave Rupert for creating the original version, called [Lettering.js](https://github.com/davatron5000/Lettering.js).
