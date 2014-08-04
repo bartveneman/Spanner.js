@@ -1,5 +1,7 @@
 # Spanner.js: wrap your text
 
+[![Code Climate](https://codeclimate.com/github/bartveneman/Spanner.js/badges/gpa.svg)](https://codeclimate.com/github/bartveneman/Spanner.js)
+
 Spanner.js is a simple way to wrap your text in `<span>`s for kerning, or other typographic effects. Spanner.js wraps the letters in your text in `<span>`s with a class `char` appended by the number of the letter, for example `char1`. __Mind you__, counting starts at 1 instead of 0;
 
 Spanner.js is a jQuery-free rip-off from @davatron5000 's [lettering.js](https://github.com/davatron5000/Lettering.js).
